@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block page_title %}{{ page_title }}{% endblock %}
+{% block content %}
+
+<div class="results-summary">
+    Found <strong>{{ found_counter }}</strong> results...
+</div>
+<hr>
+<div class="pagination">
+    {% if current_page > 1 %}
+    <a
+        href="?page={{ current_page - 1 }}&search-query={{ search_query|urlencode }}&algorithm={{ algorithm|urlencode }}">Previous</a>
+    {% endif %}
+    <span>Page {{ current_page }} of {{ total_pages }}</span>
+    {% if current_page < total_pages %} <a
+        href="?page={{ current_page + 1 }}&search-query={{ search_query|urlencode }}&algorithm={{ algorithm|urlencode }}">
+        Next</a>
+        {% endif %}
+</div>
+<hr>
+{% for item in results_list %}
+<div class="result-item pb-3">
+    <div class="doc-title">
+        <a class="title-link" href="/doc_details?id={{ item.id }}">{{ item.title }}</a>
+    </div>
+    <div class="cited">
+        <cite><a class="url-link" href="{{ item.url }}">{{ item.url }}</a></cite>
+    </div>
+    <div class="doc-desc">
+        {{ item.doc_date }} — {{ item.description }}
+    </div>
+</div>
+{% endfor %}
+
+<!-- Paginación -->
+
+
+{% endblock %}

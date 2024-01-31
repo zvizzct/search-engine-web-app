@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block page_title %}{{ page_title }}{% endblock %}
+{% block content %}
+<div class="search-section">
+    <h1 class="search-title"> IRWA Search Engine</h1>
+
+    <h2 class="search-subtitle">Explore the Conflict Through Tweets</h2>
+    <p class="search-p">Enter a search term to find tweets related to the ongoing conflict between Russia and Ukraine.
+        Discover public
+        sentiments, key events, and diverse perspectives as they unfold in this significant historical moment.</p>
+
+    <form class="search-form" method="POST" onSubmit='return validate();' action="/search">
+        <input name="search-query" type="search" placeholder="Search" aria-label="Search" autofocus="autofocus">
+        <select name="algorithm">
+            <option value="Normal_tf-idf">Normal tf-idf</option>
+            <option value="Word2Vec">Word2Vec</option>
+            <option value="Like_tf-idf">Like tf-idf</option>
+            <option value="Retweet_tf-idf">Retweet tf-idf</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+
+</div>
+
+
+
+{% endblock %}

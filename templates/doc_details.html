@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block page_title %}{{ page_title }}{% endblock %}
+
+{% block header %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document Detail - IRWA Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/custom.css') }}">
+</head>
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <div class="card">
+        <div class="info-profile">
+            <p class="profile-username">{{document.username}}</p>
+            <p class="profile-id">{{document.id}}</p>
+        </div>
+        <div class="tweet">
+            <h4>{{document.title}}</h4>
+            <p>{{document.description}}</p>
+        </div>
+        <div class="info-tweet">
+            <div class="retweet">
+                <p>{{document.retweets}}</p>
+                <img class="retweet-img" src="static/rt.png" />
+            </div>
+            <div class="like">
+                <p>{{document.likes}}</p>
+                <img class="like-img" src="static/mg.png" />
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+
+
+        <a href="#" class="nav-link" onclick="history.go(-1)">Go Back</a>
+        <a href="/stats" class="nav-link">Stats</a>
+        <a href="/dashboard" class="nav-link">Dashboard</a>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

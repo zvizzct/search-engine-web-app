@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block page_title %}{{ page_title }}{% endblock %}
+{% block content %}
+
+<div class="container-v2">
+    <h3>Statistics Dashboard</h3>
+
+
+
+    <div class="section section-session">
+        <h4>HTTP Sessions</h4>
+        <div class="sessions-container">
+            {% for session_id, session in http_sessions.items() %}
+            <div class="session-block">
+                <p><strong>Session ID:</strong> {{ session_id }}</p>
+                <p><strong>Start:</strong> {{ session.start_time }}</p>
+                <p><strong>End:</strong> {{ session.end_time if 'end_time' in session else 'Active' }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="section section-context">
+        <h4>User Context</h4>
+        <div class="context-container">
+            {% for session_id, context in user_context.items() %}
+            <div class="context-block">
+                <p><strong>Session ID:</strong> {{ session_id }}</p>
+                <p><strong>IP:</strong> {{ context.user_ip }}</p>
+                <p><strong>Agent:</strong></p>
+                <ul class="agent-details">
+                    <li>Platform: {{ context.agent.platform.name }} {{ context.agent.platform.version }}</li>
+                    <li>OS: {{ context.agent.os.name }} {{ context.agent.os.version }}</li>
+                    <li>Bot: {{ 'Yes' if context.agent.bot else 'No' }}</li>
+                    <li>Browser: {{ context.agent.browser.name }} {{ context.agent.browser.version }}</li>
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="section section-request">
+        <h4>HTTP Requests</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Path</th>
+                    <th>Method</th>
+                    <th>Timestamp</th>
+                    <th>Session ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in http_requests %}
+                <tr>
+                    <td>{{ request.path }}</td>
+                    <td>{{ request.method }}</td>
+                    <td>{{ request.timestamp }}</td>
+                    <td>{{ request.session_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

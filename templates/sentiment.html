@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block page_title %}{{ page_title }}{% endblock %}
+
+{% block header %}
+<head>
+    <meta charset="UTF-8">
+    <title>Document Detail - IRWA Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/custom.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+</head>
+{% endblock %}
+
+{% block content %}
+<div class="search-section">
+    <div class="centered">
+        <h1 class='search-title'> NLTK Sentiments </h1>
+        <p class='search-p'>
+            Type a sentence, click on the submit button and wait for your prediction.
+        </p>
+        <form method="POST" onSubmit='return validate();' action="sentiment" class='search-form'>
+            <input name="text" type="search" class="search-text" autofocus="autofocus">
+            <input type="submit" onclick='this.form.submit();'>
+        </form>
+        <br>
+        <br>
+        {% if score is defined %}
+            {% if score > 0 %}
+                <div style="color: green; display: flex; justify-content: center;">
+                    <i class="far fa-10x fa-smile"></i>
+                </div>
+            {% elif score == 0 %}
+                <div style="color: grey; display: flex; justify-content: center;">
+                    <i class="far fa-10x fa-meh-blank"></i>
+                </div>
+            {% else %}
+                <div style="color: red; display: flex; justify-content: center;">
+                    <i class="far fa-10x fa-frown"></i>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
