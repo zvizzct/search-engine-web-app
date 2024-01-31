@@ -1,6 +1,6 @@
-# Part 4: User Interface and Web Analytics
+User Interface and Web Analytics
 
-This final part of the project contains all the necessary files to run the Ukraine War Tweet Search Engine. This project is built on top of the already existing [skeleton](https://github.com/irwa-labs/search-engine-web-app). Some of the info in this README is thus the same as there.
+The project contains all the necessary files to run the Ukraine War Tweet Search Engine.
 
 ## Starting the Web App
 
