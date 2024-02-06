@@ -20,3 +20,6 @@ smart-open==6.4.0
 tqdm==4.66.1
 tzdata==2023.3
 Werkzeug==3.0.1
+textblob
+fastapi
+uvicorn
